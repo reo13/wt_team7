@@ -1,28 +1,18 @@
 var http = require('http');
-var express = require('express');
-var app = express();
 
-// app.use(express.static(__dirname + '/public'));
-
-app.get("/", function (req, res) {
-    var options = {
-        hostname: "search.mysite.com",
-        path: '/search?site=hub&client=hub_frontend&output=xml_no_dtd&q=cats'
-    };
-
-    var gsaReq = http.get(options, function (response) {
-        var completeResponse = '';
-        response.on('data', function (chunk) {
-            completeResponse += chunk;
-        });
-        response.on('end', function() {
-            console.log(completeResponse);
-        })
-    }).on('error', function (e) {
-        console.log('problem with request: ' + e.message);
-    });
-
-});
-
-app.listen(3000);
+http.createServer(function(request, response) {
+  var headers = request.headers;
+  var method = request.method;
+  var url = request.url;
+  var body = [];
+  request.on('error', function(err) {
+    console.error(err);
+  }).on('data', function(chunk) {
+    body.push(chunk);
+  }).on('end', function() {
+    body = Buffer.concat(body).toString();
+    // At this point, we have the headers, method, url and body, and can now
+    // do whatever we need to in order to respond to this request.
+  });
+}).listen(8080); // Activates this server, listening on port 8080.
 
