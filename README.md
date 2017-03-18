@@ -1,2 +1,2 @@
 # wt_team7
-Furniture project
+Project for Reducing Transfer Costs
