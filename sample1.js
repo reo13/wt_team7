@@ -9,7 +9,13 @@ server.get('/',homeListener);
 server.get('/search', function(req,res){
  console.log(req.query);	
  var in_var = Number(req.query.var1) ;
+<<<<<<< HEAD
  res.json({ok:true,message:'Square is '+(in_var*in_var)})
+=======
+ 
+ res.json({ok:true,message:'Square is '+(in_var*in_var)})
+  
+
 })
 
 server.listen(8000,function(){
