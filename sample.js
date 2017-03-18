@@ -3,7 +3,7 @@ console.log('hey you!');
 
 var server = new express();
 
-server.get('/',function(req,res)){
+server.get('/',function(req,res){
 	res.send('hello you ')
 });
 
